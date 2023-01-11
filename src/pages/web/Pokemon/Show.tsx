@@ -8,6 +8,8 @@ function Show() {
     if (isLoading) {
         return <p>cargando..</p>;
     }
+    console.log(data);
+
     return (
         <div className="container mx-auto">
             <div className="flex gap-4">

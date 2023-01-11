@@ -4,13 +4,14 @@ import Show from "./Show";
 import { JSX } from "preact/jsx-runtime";
 
 function Index() {
-    const { data, isLoading } = usePokemonApi().GetAllPokemon();
+    const { data, isLoading, isValidating } = usePokemonApi().GetAllPokemon();
 
     let Pokemons: null | JSX.Element[] | JSX.Element = null;
 
     if (isLoading) {
         Pokemons = <p>Cargando...</p>;
     }
+
     if (data) {
         Pokemons = data.results.map((pokemon, index) => (
             <Pokemon key={pokemon.name} {...pokemon} index={index} />
@@ -23,6 +24,7 @@ function Index() {
                     Pokemons
                 </h2>
                 <div className="flex flex-wrap gap-2 items-center justify-center">
+                    {isValidating ? <h1>cargandoisValidating</h1> : null}
                     {Pokemons}
                 </div>
             </section>
